@@ -1,5 +1,5 @@
 /**
- * NexusFlow - Interactive Landing Page Logic & Simulation Engine
+ * JoAI Ermaching - Interactive Landing Page Logic & Simulation Engine
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -364,7 +364,7 @@ function initNodeModals() {
         score: 95,
         qualification: "Enterprise Tier 1",
         reasoning: "Empresa tecnológica con alto crecimiento de empleados y necesidad de orquestación local.",
-        suggestedRep: "carolina.ventas@nexusflow.io"
+        suggestedRep: "carolina.ventas@joaiermaching.io"
       }
     },
     postgres: {
@@ -537,14 +537,14 @@ function initSelfHostTabs() {
 
   const commands = {
     docker: `docker run -it --rm \\
-  --name nexusflow \\
+  --name joai-ermaching \\
   -p 5678:5678 \\
-  -v ~/.nexusflow:/home/node/.nexusflow \\
-  nexusflow/engine:latest`,
+  -v ~/.joai:/home/node/.joai \\
+  joai/ermaching:latest`,
     compose: `version: '3.8'
 services:
-  nexusflow:
-    image: nexusflow/engine:latest
+  joai-ermaching:
+    image: joai/ermaching:latest
     restart: always
     ports:
       - "5678:5678"
@@ -552,15 +552,15 @@ services:
       - DB_TYPE=postgresdb
       - DB_POSTGRESDB_HOST=postgres
     volumes:
-      - nexusflow_data:/home/node/.nexusflow`,
-    k8s: `helm repo add nexusflow https://helm.nexusflow.io
+      - joai_data:/home/node/.joai`,
+    k8s: `helm repo add joai https://helm.joaiermaching.io
 helm repo update
-helm install nexusflow-cluster nexusflow/nexusflow \\
+helm install joai-cluster joai/joai-ermaching \\
   --namespace automation \\
   --create-namespace \\
   --set persistence.size=20Gi`,
-    npm: `npm install -g nexusflow
-nexusflow start`
+    npm: `npm install -g joai-ermaching
+joai-ermaching start`
   };
 
   tabs.forEach(tab => {
@@ -668,7 +668,7 @@ function initHeroCopy() {
   function copyAction() {
     navigator.clipboard.writeText(text.textContent).then(() => {
       tooltip.classList.add('show');
-      showToast('📋 Comando Docker copiado: docker run -it --rm -p 5678:5678 nexusflow/engine');
+      showToast('📋 Comando Docker copiado: docker run -it --rm -p 5678:5678 joai/ermaching');
       setTimeout(() => tooltip.classList.remove('show'), 2000);
     });
   }
@@ -690,7 +690,7 @@ function showToast(message) {
   const toast = document.createElement('div');
   toast.className = 'toast';
   toast.innerHTML = `
-    <span class="toast-dot" style="width:8px;height:8px;border-radius:50%;background:#8b5cf6;"></span>
+    <span class="toast-dot" style="width:8px;height:8px;border-radius:50%;background:#38bdf8;box-shadow:0 0 8px #facc15;"></span>
     <span>${message}</span>
   `;
   container.appendChild(toast);

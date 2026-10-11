@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NexusFlow | Orquestación Inteligente y Automatización de Flujos Sin Límites</title>
-  <meta name="description" content="Plataforma de automatización de flujos de trabajo basada en nodos similar a n8n. Conecta IA, APIs, bases de datos y escribe código JS/Python libremente. Auto-hospedable o en la nube.">
+  <title>JoAI Ermaching | Orquestación Inteligente y Automatización de Flujos Sin Límites</title>
+  <meta name="description" content="JoAI Ermaching - Plataforma de automatización de flujos de trabajo basada en nodos similar a n8n. Conecta IA, APIs, bases de datos y escribe código JS/Python libremente. Auto-hospedable o en la nube.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
   <aside class="announcement-bar" aria-label="Novedades de la versión">
     <div class="announcement-content">
       <span class="badge-pulse">NUEVO</span>
-      <span>NexusFlow v3.4 ya disponible: Orquestación nativa de Agentes IA y soporte MCP</span>
+      <span>JoAI Ermaching v3.4 ya disponible: Orquestación nativa de Agentes IA y soporte MCP</span>
       <a href="#ia-section" class="announcement-link">Descubrir novedades &rarr;</a>
     </div>
   </aside>
@@ -29,7 +29,7 @@
   <!-- Navigation -->
   <header class="site-header" id="site-header">
     <nav class="nav-container" aria-label="Navegación principal">
-      <a href="#" class="brand-logo" aria-label="NexusFlow inicio">
+      <a href="#" class="brand-logo" aria-label="JoAI Ermaching inicio">
         <div class="logo-mark">
           <svg viewBox="0 0 32 32" fill="none" class="logo-svg">
             <rect width="32" height="32" rx="8" fill="url(#logo-grad)"/>
@@ -39,14 +39,14 @@
             <path d="M10 16L22 10M10 16L22 22" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
             <defs>
               <linearGradient id="logo-grad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#FF5C38"/>
-                <stop offset="0.5" stop-color="#8B5CF6"/>
-                <stop offset="1" stop-color="#06B6D4"/>
+                <stop stop-color="#0284C7"/>
+                <stop offset="0.5" stop-color="#38BDF8"/>
+                <stop offset="1" stop-color="#FACC15"/>
               </linearGradient>
             </defs>
           </svg>
         </div>
-        <span class="brand-name">Nexus<span>Flow</span></span>
+        <span class="brand-name">JoAI<span>Ermaching</span></span>
       </a>
 
       <div class="nav-links">
@@ -111,7 +111,7 @@
           </h1>
 
           <p class="hero-subtitle">
-            NexusFlow combina la velocidad de un diseñador visual basado en nodos con el poder total de JavaScript, Python y Agentes LLM. Ejecútalo en tu propia infraestructura con Docker o en nuestra nube administrada.
+            JoAI Ermaching combina la velocidad de un diseñador visual basado en nodos con el poder total de JavaScript, Python y Agentes LLM. Ejecútalo en tu propia infraestructura con Docker o en nuestra nube administrada.
           </p>
 
           <div class="hero-cta-group">
@@ -122,7 +122,7 @@
 
             <div class="hero-quick-terminal" title="Haz clic para copiar comando Docker">
               <span class="terminal-prefix">$</span>
-              <code id="hero-cmd-text">docker run -it --rm -p 5678:5678 nexusflow/engine</code>
+              <code id="hero-cmd-text">docker run -it --rm -p 5678:5678 joai/ermaching</code>
               <button class="btn-copy-code" id="btn-copy-hero-cmd" aria-label="Copiar comando">
                 <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
                 <span class="copied-tooltip" id="hero-cmd-tooltip">¡Copiado!</span>
@@ -189,9 +189,9 @@
                 <!-- Connectors with unique glow filters -->
                 <defs>
                   <linearGradient id="wire-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#ff7849" />
-                    <stop offset="50%" stop-color="#8b5cf6" />
-                    <stop offset="100%" stop-color="#06b6d4" />
+                    <stop offset="0%" stop-color="#38bdf8" />
+                    <stop offset="50%" stop-color="#ffffff" />
+                    <stop offset="100%" stop-color="#facc15" />
                   </linearGradient>
                   <filter id="glow-filter" x="-20%" y="-20%" width="140%" height="140%">
                     <feGaussianBlur stdDeviation="3" result="glow" />
@@ -206,10 +206,10 @@
                 <path id="path-3-5" class="flow-wire" d="M 890 180 C 930 180, 950 250, 1000 250" />
 
                 <!-- Moving Energy Packets (animated along paths during run) -->
-                <circle id="packet-1" class="energy-packet" r="4.5" fill="#ff7849" opacity="0"></circle>
-                <circle id="packet-2" class="energy-packet" r="4.5" fill="#8b5cf6" opacity="0"></circle>
-                <circle id="packet-3" class="energy-packet" r="4.5" fill="#06b6d4" opacity="0"></circle>
-                <circle id="packet-4" class="energy-packet" r="4.5" fill="#10b981" opacity="0"></circle>
+                <circle id="packet-1" class="energy-packet" r="4.5" fill="#38bdf8" opacity="0"></circle>
+                <circle id="packet-2" class="energy-packet" r="4.5" fill="#facc15" opacity="0"></circle>
+                <circle id="packet-3" class="energy-packet" r="4.5" fill="#ffffff" opacity="0"></circle>
+                <circle id="packet-4" class="energy-packet" r="4.5" fill="#38bdf8" opacity="0"></circle>
               </svg>
 
               <!-- Node 1: Webhook Trigger -->
@@ -378,11 +378,11 @@
       </div>
     </section>
 
-    <!-- Comparison: NexusFlow vs Generic No-Code (Zapier/Make) -->
+    <!-- Comparison: JoAI Ermaching vs Generic No-Code (Zapier/Make) -->
     <section class="section comparison-section" id="caracteristicas">
       <div class="container">
         <div class="section-badge-center">
-          <span class="badge-text">¿POR QUÉ NEXUSFLOW?</span>
+          <span class="badge-text">¿POR QUÉ JOAI ERMACHING?</span>
         </div>
         <h2 class="section-title text-center">
           Construido para desarrolladores que odian las limitaciones del no-code tradicional
@@ -428,8 +428,8 @@
             </ul>
           </div>
 
-          <div class="comparison-card comp-nexus highlight-card">
-            <div class="comp-badge nexus">Con NexusFlow (Fair-Code & Abierto)</div>
+          <div class="comparison-card comp-nexus comp-joai highlight-card">
+            <div class="comp-badge nexus comp-badge-joai">Con JoAI Ermaching (Fair-Code & Abierto)</div>
             <h3 class="comp-title">Libertad total, privacidad y potencia de código</h3>
             <ul class="comp-list">
               <li>
@@ -475,7 +475,7 @@
         </div>
         <h2 class="section-title text-center">Diseñado desde cero para la era de los Agentes de IA</h2>
         <p class="section-subtitle text-center">
-          Explora los pilares que hacen de NexusFlow la plataforma preferida por arquitectos de software e ingenieros de automatización.
+          Explora los pilares que hacen de JoAI Ermaching la plataforma preferida por arquitectos de software e ingenieros de automatización.
         </p>
 
         <!-- Feature Tabs Selector -->
@@ -564,7 +564,7 @@
               <span class="detail-tag tag-cyan">Full-Stack Execution</span>
               <h3>Escribe código real cuando los bloques visuales se quedan cortos</h3>
               <p>
-                Las herramientas no-code comunes fallan en cuanto necesitas transformar un JSON complejo o calcular firmas criptográficas. Con NexusFlow, cualquier nodo puede ser una función pura en JavaScript (ES2024) o Python 3.12 con soporte total para paquetes externos.
+                Las herramientas no-code comunes fallan en cuanto necesitas transformar un JSON complejo o calcular firmas criptográficas. Con JoAI Ermaching, cualquier nodo puede ser una función pura en JavaScript (ES2024) o Python 3.12 con soporte total para paquetes externos.
               </p>
               <div class="feature-bullets">
                 <div class="bullet-row">
@@ -630,7 +630,7 @@
                   <span class="file-name">.github/workflows/deploy-flows.yml</span>
                   <span class="lang-tag">YAML</span>
                 </div>
-                <pre class="code-body"><code><span class="token-keyword">name:</span> <span class="token-string">Sync NexusFlow Workflows</span>
+                <pre class="code-body"><code><span class="token-keyword">name:</span> <span class="token-string">Sync JoAI Ermaching Workflows</span>
 <span class="token-keyword">on:</span>
   <span class="token-keyword">push:</span>
     <span class="token-keyword">branches:</span> [ <span class="token-string">main</span> ]
@@ -642,8 +642,8 @@
       - <span class="token-keyword">uses:</span> actions/checkout@v4
       - <span class="token-keyword">name:</span> Deploy to Cluster
         <span class="token-keyword">run:</span> |
-          nexusflow-cli sync \
-            --token ${{ secrets.NEXUS_API_KEY }} \
+          joai-cli sync \
+            --token ${{ secrets.JOAI_API_KEY }} \
             --env production \
             --dir ./workflows</code></pre>
               </div>
@@ -678,11 +678,11 @@
                   <span class="lang-tag">DOCKER</span>
                 </div>
                 <pre class="code-body"><code><span class="token-keyword">services:</span>
-  <span class="token-key">nexusflow-cluster:</span>
-    <span class="token-key">image:</span> nexusflow/engine:enterprise
+  <span class="token-key">joai-cluster:</span>
+    <span class="token-key">image:</span> joai/ermaching:enterprise
     <span class="token-key">restart:</span> always
     <span class="token-key">environment:</span>
-      - <span class="token-string">ENCRYPTION_KEY=${NEXUS_SECRET_KEY}</span>
+      - <span class="token-string">ENCRYPTION_KEY=${JOAI_SECRET_KEY}</span>
       - <span class="token-string">DB_TYPE=postgresdb</span>
       - <span class="token-string">SAML_SSO_ENABLED=true</span>
       - <span class="token-string">AUDIT_LOGS_DESTINATION=s3://corp-audit</span>
@@ -854,7 +854,7 @@
             <span class="detail-tag tag-emerald">Fair-Code License</span>
             <h2>Despliega en tu propia infraestructura en menos de 60 segundos</h2>
             <p>
-              Sin telemetría invasiva ni restricciones artificiales de rendimiento. Solo necesitas Docker para tener una instancia completa de NexusFlow corriendo en tu VPS, servidor local o cluster Kubernetes.
+              Sin telemetría invasiva ni restricciones artificiales de rendimiento. Solo necesitas Docker para tener una instancia completa de JoAI Ermaching corriendo en tu VPS, servidor local o cluster Kubernetes.
             </p>
 
             <div class="install-options-tabs">
@@ -873,10 +873,10 @@
                 </button>
               </div>
               <pre class="terminal-code"><code id="install-command-display">docker run -it --rm \
-  --name nexusflow \
+  --name joai-ermaching \
   -p 5678:5678 \
-  -v ~/.nexusflow:/home/node/.nexusflow \
-  nexusflow/engine:latest</code></pre>
+  -v ~/.joai:/home/node/.joai \
+  joai/ermaching:latest</code></pre>
             </div>
 
             <div class="self-host-benefits">
@@ -907,7 +907,7 @@
         </div>
         <h2 class="section-title text-center">Precios diseñados para escalar sin sorpresas</h2>
         <p class="section-subtitle text-center">
-          Elige entre auto-hospedar gratuitamente en tus servidores o dejar la infraestructura en nuestras manos con NexusFlow Cloud.
+          Elige entre auto-hospedar gratuitamente en tus servidores o dejar la infraestructura en nuestras manos con JoAI Ermaching Cloud.
         </p>
 
         <!-- Billing Period Toggle -->
@@ -1011,7 +1011,7 @@
           <div class="testimonial-card">
             <div class="testi-rating">★★★★★</div>
             <p class="testi-text">
-              "Migramos más de 180 flujos desde Zapier a NexusFlow. No solo ahorramos más de 2.400 € al mes en costes de operaciones, sino que el hecho de poder meter código JavaScript real en los nodos nos permitió resolver pipelines de datos que antes eran imposibles."
+              "Migramos más de 180 flujos desde Zapier a JoAI Ermaching. No solo ahorramos más de 2.400 € al mes en costes de operaciones, sino que el hecho de poder meter código JavaScript real en los nodos nos permitió resolver pipelines de datos que antes eran imposibles."
             </p>
             <div class="testi-author">
               <div class="author-avatar av-1">MC</div>
@@ -1039,7 +1039,7 @@
           <div class="testimonial-card">
             <div class="testi-rating">★★★★★</div>
             <p class="testi-text">
-              "Para nosotros como clínica de salud, el requerimiento de cumplimiento GDPR y soberanía de datos impedía el uso de plataformas no-code públicas. Correr NexusFlow en nuestro propio cluster Kubernetes fue la solución perfecta."
+              "Para nosotros como clínica de salud, el requerimiento de cumplimiento GDPR y soberanía de datos impedía el uso de plataformas no-code públicas. Correr JoAI Ermaching en nuestro propio cluster Kubernetes fue la solución perfecta."
             </p>
             <div class="testi-author">
               <div class="author-avatar av-3">DA</div>
@@ -1066,12 +1066,12 @@
           
           <div class="faq-item">
             <button class="faq-trigger" aria-expanded="false">
-              <span>¿En qué se diferencia NexusFlow de n8n o Zapier?</span>
+              <span>¿En qué se diferencia JoAI Ermaching de n8n o Zapier?</span>
               <svg class="faq-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="faq-content">
               <p>
-                A diferencia de Zapier, NexusFlow es fair-code y te permite auto-hospedar ilimitadamente sin pagar por cada tarea individual. Y comparado con n8n, NexusFlow integra una arquitectura nativa de agentes de Inteligencia Artificial con soporte MCP (Model Context Protocol), conectores para modelos locales como Ollama y una suite moderna de sincronización Git bidireccional.
+                A diferencia de Zapier, JoAI Ermaching es fair-code y te permite auto-hospedar ilimitadamente sin pagar por cada tarea individual. Y comparado con n8n, JoAI Ermaching integra una arquitectura nativa de agentes de Inteligencia Artificial con soporte MCP (Model Context Protocol), conectores para modelos locales como Ollama y una suite moderna de sincronización Git bidireccional.
               </p>
             </div>
           </div>
@@ -1095,7 +1095,7 @@
             </button>
             <div class="faq-content">
               <p>
-                NexusFlow incluye un nodo nativo de LLM local compatible con cualquier servidor HTTP que exponga la API estándar de inferencia (como Ollama, LM Studio o vLLM). Simplemente configuras la URL local de tu endpoint (ej: <code>http://localhost:11434</code>) y procesarás texto, resúmenes y clasificaciones sin que ningún dato salga de tu red privada.
+                JoAI Ermaching incluye un nodo nativo de LLM local compatible con cualquier servidor HTTP que exponga la API estándar de inferencia (como Ollama, LM Studio o vLLM). Simplemente configuras la URL local de tu endpoint (ej: <code>http://localhost:11434</code>) y procesarás texto, resúmenes y clasificaciones sin que ningún dato salga de tu red privada.
               </p>
             </div>
           </div>
@@ -1107,7 +1107,7 @@
             </button>
             <div class="faq-content">
               <p>
-                Sí. Todos los workflows se pueden exportar e importar en formato JSON estándar. Nuestra CLI <code>nexusflow-cli</code> te permite automatizar la sincronización de flujos desde GitHub Actions, GitLab CI o Bitbucket, facilitando pruebas automatizadas antes de pasar a producción.
+                Sí. Todos los workflows se pueden exportar e importar en formato JSON estándar. Nuestra CLI <code>joai-cli</code> te permite automatizar la sincronización de flujos desde GitHub Actions, GitLab CI o Bitbucket, facilitando pruebas automatizadas antes de pasar a producción.
               </p>
             </div>
           </div>
@@ -1213,14 +1213,14 @@
               <path d="M10 16L22 10M10 16L22 22" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
               <defs>
                 <linearGradient id="logo-grad-f" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#FF5C38"/>
-                  <stop offset="0.5" stop-color="#8B5CF6"/>
-                  <stop offset="1" stop-color="#06B6D4"/>
+                  <stop stop-color="#0284C7"/>
+                  <stop offset="0.5" stop-color="#38BDF8"/>
+                  <stop offset="1" stop-color="#FACC15"/>
                 </linearGradient>
               </defs>
             </svg>
           </div>
-          <span class="brand-name">Nexus<span>Flow</span></span>
+          <span class="brand-name">JoAI<span>Ermaching</span></span>
         </div>
         <p class="footer-tagline">
           La plataforma visual de automatización basada en nodos con código abierto, soporte para IA autónoma y soberanía total sobre tus datos.
@@ -1281,7 +1281,7 @@
 
     <div class="footer-bottom-bar">
       <div class="container footer-bottom-content">
-        <p>&copy; 2026 NexusFlow Technologies Inc. Todos los derechos reservados. Inspirado en la filosofía de automatización flexible.</p>
+        <p>&copy; 2026 JoAI Ermaching Technologies Inc. Todos los derechos reservados. Inspirado en la filosofía de automatización flexible.</p>
         <div class="footer-socials">
           <a href="#" aria-label="Twitter / X">𝕏</a>
           <a href="#" aria-label="GitHub">GitHub</a>
@@ -1292,6 +1292,6 @@
     </div>
   </footer>
 
-  <script src="main.js"></script>
+  <script type="module" src="main.js"></script>
 </body>
 </html>
