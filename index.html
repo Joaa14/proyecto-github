@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexusFlow | Orquestación Inteligente y Automatización de Flujos Sin Límites</title>
+  <meta name="description" content="Plataforma de automatización de flujos de trabajo basada en nodos similar a n8n. Conecta IA, APIs, bases de datos y escribe código JS/Python libremente. Auto-hospedable o en la nube.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Glow Backgrounds -->
+  <div class="ambient-glow glow-top-center" aria-hidden="true"></div>
+  <div class="ambient-glow glow-hero-purple" aria-hidden="true"></div>
+  <div class="ambient-glow glow-bottom-cyan" aria-hidden="true"></div>
+
+  <!-- Announcement Bar -->
+  <aside class="announcement-bar" aria-label="Novedades de la versión">
+    <div class="announcement-content">
+      <span class="badge-pulse">NUEVO</span>
+      <span>NexusFlow v3.4 ya disponible: Orquestación nativa de Agentes IA y soporte MCP</span>
+      <a href="#ia-section" class="announcement-link">Descubrir novedades &rarr;</a>
+    </div>
+  </aside>
+
+  <!-- Navigation -->
+  <header class="site-header" id="site-header">
+    <nav class="nav-container" aria-label="Navegación principal">
+      <a href="#" class="brand-logo" aria-label="NexusFlow inicio">
+        <div class="logo-mark">
+          <svg viewBox="0 0 32 32" fill="none" class="logo-svg">
+            <rect width="32" height="32" rx="8" fill="url(#logo-grad)"/>
+            <circle cx="10" cy="16" r="3.5" fill="#ffffff" />
+            <circle cx="22" cy="10" r="3.5" fill="#ffffff" />
+            <circle cx="22" cy="22" r="3.5" fill="#ffffff" />
+            <path d="M10 16L22 10M10 16L22 22" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="logo-grad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FF5C38"/>
+                <stop offset="0.5" stop-color="#8B5CF6"/>
+                <stop offset="1" stop-color="#06B6D4"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="brand-name">Nexus<span>Flow</span></span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#canvas-demo" class="nav-link">Editor Visual</a>
+        <a href="#caracteristicas" class="nav-link">Características</a>
+        <a href="#ia-section" class="nav-link">Agentes IA</a>
+        <a href="#plantillas" class="nav-link">Plantillas</a>
+        <a href="#self-hosted" class="nav-link">Self-Hosted</a>
+        <a href="#precios" class="nav-link">Precios</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="github-badge" aria-label="Repositorio de GitHub">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>Star</span>
+          <span class="gh-counter" id="gh-counter">52.4k</span>
+        </a>
+        <a href="#precios" class="btn btn-ghost">Iniciar Sesión</a>
+        <a href="#self-hosted" class="btn btn-primary glow-button">
+          <span>Comenzar Gratis</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="#canvas-demo" class="mob-link">Editor Visual</a>
+      <a href="#caracteristicas" class="mob-link">Características</a>
+      <a href="#ia-section" class="mob-link">Agentes IA</a>
+      <a href="#plantillas" class="mob-link">Plantillas</a>
+      <a href="#self-hosted" class="mob-link">Self-Hosted</a>
+      <a href="#precios" class="mob-link">Precios</a>
+      <div class="mob-actions">
+        <a href="#self-hosted" class="btn btn-primary" style="width: 100%;">Comenzar Gratis</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-container">
+        
+        <div class="hero-header">
+          <div class="hero-badge">
+            <span class="dot-live"></span>
+            <span>La alternativa Fair-Code & Flexible a Make y Zapier</span>
+          </div>
+
+          <h1 class="hero-title">
+            Automatiza cualquier flujo.<br>
+            <span class="text-gradient">Conecta IA, APIs y código</span> sin restricciones.
+          </h1>
+
+          <p class="hero-subtitle">
+            NexusFlow combina la velocidad de un diseñador visual basado en nodos con el poder total de JavaScript, Python y Agentes LLM. Ejecútalo en tu propia infraestructura con Docker o en nuestra nube administrada.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#canvas-demo" class="btn btn-primary btn-lg glow-button" id="btn-hero-demo">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              <span>Probar Simulador Interactivo</span>
+            </a>
+
+            <div class="hero-quick-terminal" title="Haz clic para copiar comando Docker">
+              <span class="terminal-prefix">$</span>
+              <code id="hero-cmd-text">docker run -it --rm -p 5678:5678 nexusflow/engine</code>
+              <button class="btn-copy-code" id="btn-copy-hero-cmd" aria-label="Copiar comando">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span class="copied-tooltip" id="hero-cmd-tooltip">¡Copiado!</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="hero-perks">
+            <div class="perk-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>100% de propiedad sobre tus datos</span>
+            </div>
+            <div class="perk-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Sin cobros absurdos por paso</span>
+            </div>
+            <div class="perk-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>+450 integraciones listas para usar</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Canvas / Hero Demo -->
+        <div class="canvas-showcase-wrapper" id="canvas-demo">
+          <div class="canvas-window">
+            
+            <!-- Canvas Toolbar -->
+            <div class="canvas-window-header">
+              <div class="window-controls">
+                <span class="win-btn win-red"></span>
+                <span class="win-btn win-yellow"></span>
+                <span class="win-btn win-green"></span>
+                <span class="workflow-name-tag">
+                  <span class="status-indicator"></span>
+                  <strong>Workflow activo:</strong> Lead Enrichment & AI Autonomous Outreach
+                </span>
+              </div>
+
+              <div class="canvas-actions">
+                <div class="flow-status-pill" id="flow-status-pill">
+                  <span class="pill-dot"></span>
+                  <span id="flow-status-label">Listo para ejecutar</span>
+                </div>
+
+                <button class="btn btn-run-flow" id="btn-run-simulation">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                  <span>Ejecutar Flujo de Prueba</span>
+                </button>
+
+                <button class="btn btn-icon" id="btn-reset-flow" title="Reiniciar vista">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Canvas Workspace -->
+            <div class="canvas-body" id="canvas-workspace">
+              <!-- Background grid with subtle dots -->
+              <div class="canvas-grid-pattern"></div>
+
+              <!-- SVG Connecting Paths -->
+              <svg class="canvas-svg-layer" id="canvas-svg" xmlns="http://www.w3.org/2000/svg">
+                <!-- Connectors with unique glow filters -->
+                <defs>
+                  <linearGradient id="wire-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#ff7849" />
+                    <stop offset="50%" stop-color="#8b5cf6" />
+                    <stop offset="100%" stop-color="#06b6d4" />
+                  </linearGradient>
+                  <filter id="glow-filter" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="3" result="glow" />
+                    <feComposite in="SourceGraphic" in2="glow" operator="over" />
+                  </filter>
+                </defs>
+
+                <!-- Static wire paths -->
+                <path id="path-1-2" class="flow-wire" d="M 230 180 C 290 180, 310 180, 370 180" />
+                <path id="path-2-3" class="flow-wire" d="M 570 180 C 620 180, 640 180, 690 180" />
+                <path id="path-3-4" class="flow-wire" d="M 890 180 C 930 180, 950 120, 1000 120" />
+                <path id="path-3-5" class="flow-wire" d="M 890 180 C 930 180, 950 250, 1000 250" />
+
+                <!-- Moving Energy Packets (animated along paths during run) -->
+                <circle id="packet-1" class="energy-packet" r="4.5" fill="#ff7849" opacity="0"></circle>
+                <circle id="packet-2" class="energy-packet" r="4.5" fill="#8b5cf6" opacity="0"></circle>
+                <circle id="packet-3" class="energy-packet" r="4.5" fill="#06b6d4" opacity="0"></circle>
+                <circle id="packet-4" class="energy-packet" r="4.5" fill="#10b981" opacity="0"></circle>
+              </svg>
+
+              <!-- Node 1: Webhook Trigger -->
+              <div class="flow-node node-trigger" id="node-1" data-node="webhook" style="left: 40px; top: 120px;">
+                <div class="node-header">
+                  <div class="node-icon icon-trigger">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                  </div>
+                  <div class="node-title-group">
+                    <span class="node-category">Disparador</span>
+                    <strong class="node-name">Webhook Entrada</strong>
+                  </div>
+                  <span class="node-indicator" id="ind-1"></span>
+                </div>
+                <div class="node-content">
+                  <div class="node-meta">POST /api/v1/leads</div>
+                  <div class="node-metric" id="metric-1">Esperando evento...</div>
+                </div>
+                <div class="node-port port-out" title="Salida de datos"></div>
+              </div>
+
+              <!-- Node 2: JavaScript Cleanse -->
+              <div class="flow-node node-code" id="node-2" data-node="code" style="left: 370px; top: 120px;">
+                <div class="node-port port-in" title="Entrada"></div>
+                <div class="node-header">
+                  <div class="node-icon icon-code">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                  </div>
+                  <div class="node-title-group">
+                    <span class="node-category">Transformación</span>
+                    <strong class="node-name">Limpieza & Validación JS</strong>
+                  </div>
+                  <span class="node-indicator" id="ind-2"></span>
+                </div>
+                <div class="node-content">
+                  <div class="node-meta"><code>normalizeEmail() + verify()</code></div>
+                  <div class="node-metric" id="metric-2">Listo (Node.js runtime)</div>
+                </div>
+                <div class="node-port port-out" title="Salida"></div>
+              </div>
+
+              <!-- Node 3: AI Agent (Claude 3.5 / OpenAI) -->
+              <div class="flow-node node-ai" id="node-3" data-node="ai" style="left: 690px; top: 120px;">
+                <div class="node-port port-in"></div>
+                <div class="node-header">
+                  <div class="node-icon icon-ai">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2a4 4 0 0 1 4 4v1a4 4 0 0 1-4 4 4 4 0 0 1-4-4V6a4 4 0 0 1 4-4z"/><path d="M18 10a6 6 0 0 1 6 6v2H0v-2a6 6 0 0 1 6-6"/><circle cx="12" cy="17" r="2"/></svg>
+                  </div>
+                  <div class="node-title-group">
+                    <span class="node-category">Agente Inteligente</span>
+                    <strong class="node-name">AI Scoring & Prompt</strong>
+                  </div>
+                  <span class="node-indicator" id="ind-3"></span>
+                </div>
+                <div class="node-content">
+                  <div class="node-meta">Claude 3.5 Sonnet / GPT-4o</div>
+                  <div class="node-metric" id="metric-3">Evaluar intención & ROI</div>
+                </div>
+                <div class="node-port port-out"></div>
+              </div>
+
+              <!-- Node 4: PostgreSQL Branch -->
+              <div class="flow-node node-database" id="node-4" data-node="postgres" style="left: 1000px; top: 60px;">
+                <div class="node-port port-in"></div>
+                <div class="node-header">
+                  <div class="node-icon icon-db">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                  </div>
+                  <div class="node-title-group">
+                    <span class="node-category">Base de Datos</span>
+                    <strong class="node-name">PostgreSQL Upsert</strong>
+                  </div>
+                  <span class="node-indicator" id="ind-4"></span>
+                </div>
+                <div class="node-content">
+                  <div class="node-meta"><code>INSERT INTO qualified_leads</code></div>
+                  <div class="node-metric" id="metric-4">Conexión cifrada</div>
+                </div>
+              </div>
+
+              <!-- Node 5: Slack / Notification -->
+              <div class="flow-node node-action" id="node-5" data-node="slack" style="left: 1000px; top: 190px;">
+                <div class="node-port port-in"></div>
+                <div class="node-header">
+                  <div class="node-icon icon-slack">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                  </div>
+                  <div class="node-title-group">
+                    <span class="node-category">Comunicación</span>
+                    <strong class="node-name">Alerta Slack / WhatsApp</strong>
+                  </div>
+                  <span class="node-indicator" id="ind-5"></span>
+                </div>
+                <div class="node-content">
+                  <div class="node-meta">Canal: #leads-enterprise</div>
+                  <div class="node-metric" id="metric-5">Notificación instantánea</div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Live Execution Inspector Drawer -->
+            <div class="canvas-inspector" id="canvas-inspector">
+              <div class="inspector-header">
+                <div class="inspector-title">
+                  <span class="terminal-dot green"></span>
+                  <strong>Consola de Ejecución en Tiempo Real</strong>
+                  <span class="exec-time" id="exec-timer">0.00ms</span>
+                </div>
+                <button class="btn-close-inspector" id="btn-toggle-inspector" aria-label="Alternar consola">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                </button>
+              </div>
+              <div class="inspector-body" id="inspector-logs">
+                <div class="log-entry log-ready">
+                  <span class="log-time">[00:00:00]</span>
+                  <span class="log-tag tag-system">SYSTEM</span>
+                  <span>Editor en modo interactivo. Haz clic en <strong>"Ejecutar Flujo de Prueba"</strong> para simular el paso de datos.</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Logos / Integrations Marquee -->
+    <section class="integrations-marquee-section">
+      <div class="container">
+        <p class="marquee-caption">CONÉCTATE DE FORMA NATIVA CON MÁS DE 450 HERRAMIENTAS, APIS Y MODELOS DE LENGUAJE</p>
+      </div>
+      <div class="marquee-track-wrapper">
+        <div class="marquee-track">
+          <!-- Repeatable logo items -->
+          <div class="marquee-item"><span class="m-icon">⚡</span> OpenAI</div>
+          <div class="marquee-item"><span class="m-icon">🧠</span> Anthropic Claude</div>
+          <div class="marquee-item"><span class="m-icon">🐘</span> PostgreSQL</div>
+          <div class="marquee-item"><span class="m-icon">💬</span> Slack</div>
+          <div class="marquee-item"><span class="m-icon">🐙</span> GitHub</div>
+          <div class="marquee-item"><span class="m-icon">💳</span> Stripe</div>
+          <div class="marquee-item"><span class="m-icon">☁️</span> AWS Lambda</div>
+          <div class="marquee-item"><span class="m-icon">📝</span> Notion</div>
+          <div class="marquee-item"><span class="m-icon">⚡</span> Supabase</div>
+          <div class="marquee-item"><span class="m-icon">📦</span> Docker</div>
+          <div class="marquee-item"><span class="m-icon">🗄️</span> Redis</div>
+          <div class="marquee-item"><span class="m-icon">🎯</span> HubSpot</div>
+          <div class="marquee-item"><span class="m-icon">🚀</span> Pinecone</div>
+          <div class="marquee-item"><span class="m-icon">📨</span> SendGrid</div>
+
+          <!-- Duplicated for seamless infinite loop -->
+          <div class="marquee-item"><span class="m-icon">⚡</span> OpenAI</div>
+          <div class="marquee-item"><span class="m-icon">🧠</span> Anthropic Claude</div>
+          <div class="marquee-item"><span class="m-icon">🐘</span> PostgreSQL</div>
+          <div class="marquee-item"><span class="m-icon">💬</span> Slack</div>
+          <div class="marquee-item"><span class="m-icon">🐙</span> GitHub</div>
+          <div class="marquee-item"><span class="m-icon">💳</span> Stripe</div>
+          <div class="marquee-item"><span class="m-icon">☁️</span> AWS Lambda</div>
+          <div class="marquee-item"><span class="m-icon">📝</span> Notion</div>
+          <div class="marquee-item"><span class="m-icon">⚡</span> Supabase</div>
+          <div class="marquee-item"><span class="m-icon">📦</span> Docker</div>
+          <div class="marquee-item"><span class="m-icon">🗄️</span> Redis</div>
+          <div class="marquee-item"><span class="m-icon">🎯</span> HubSpot</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison: NexusFlow vs Generic No-Code (Zapier/Make) -->
+    <section class="section comparison-section" id="caracteristicas">
+      <div class="container">
+        <div class="section-badge-center">
+          <span class="badge-text">¿POR QUÉ NEXUSFLOW?</span>
+        </div>
+        <h2 class="section-title text-center">
+          Construido para desarrolladores que odian las limitaciones del no-code tradicional
+        </h2>
+        <p class="section-subtitle text-center">
+          Olvida los cargos sorpresivos por cada clic, las limitaciones de ejecución y las plataformas cerradas que secuestran tus datos de negocio.
+        </p>
+
+        <div class="comparison-grid">
+          
+          <div class="comparison-card comp-legacy">
+            <div class="comp-badge legacy">Herramientas No-Code Tradicionales</div>
+            <h3 class="comp-title">Cajas negras & Facturas desorbitadas</h3>
+            <ul class="comp-list">
+              <li>
+                <span class="cross">✕</span>
+                <div>
+                  <strong>Cobro por cada tarea u operación:</strong>
+                  <p>Un bucle descontrolado o un webhook masivo puede disparar tu factura a miles de euros al mes.</p>
+                </div>
+              </li>
+              <li>
+                <span class="cross">✕</span>
+                <div>
+                  <strong>Sin acceso al código real:</strong>
+                  <p>Incapacidad de instalar librerías de npm o paquetes de Python cuando necesitas lógica avanzada.</p>
+                </div>
+              </li>
+              <li>
+                <span class="cross">✕</span>
+                <div>
+                  <strong>Privacidad y cumplimiento en riesgo:</strong>
+                  <p>Tus datos confidenciales de clientes deben viajar obligatoriamente a servidores de terceros.</p>
+                </div>
+              </li>
+              <li>
+                <span class="cross">✕</span>
+                <div>
+                  <strong>Control de versiones inexistente:</strong>
+                  <p>Sin integración nativa con Git, ramas ni auditoría de despliegues entre entornos.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="comparison-card comp-nexus highlight-card">
+            <div class="comp-badge nexus">Con NexusFlow (Fair-Code & Abierto)</div>
+            <h3 class="comp-title">Libertad total, privacidad y potencia de código</h3>
+            <ul class="comp-list">
+              <li>
+                <span class="check">✓</span>
+                <div>
+                  <strong>Ejecuciones ilimitadas en tu servidor:</strong>
+                  <p>Auto-hospeda con Docker y ejecuta millones de flujos diarios con costo marginal cero.</p>
+                </div>
+              </li>
+              <li>
+                <span class="check">✓</span>
+                <div>
+                  <strong>JavaScript & Python nativo:</strong>
+                  <p>Escribe funciones personalizadas dentro de los nodos con acceso completo a paquetes externos.</p>
+                </div>
+              </li>
+              <li>
+                <span class="check">✓</span>
+                <div>
+                  <strong>Soberanía de datos y GDPR nativo:</strong>
+                  <p>Tus datos jamás abandonan tu infraestructura o VPC a menos que tú lo decidas explícitamente.</p>
+                </div>
+              </li>
+              <li>
+                <span class="check">✓</span>
+                <div>
+                  <strong>Git Push to Deploy & CI/CD:</strong>
+                  <p>Sincroniza tus workflows con GitHub o GitLab, realiza code-reviews y despliega con pipelines.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Deep Dive Features (Tabbed Showcase) -->
+    <section class="section features-tabs-section" id="ia-section">
+      <div class="container">
+        <div class="section-badge-center">
+          <span class="badge-text">POTENCIA SIN PRECEDENTES</span>
+        </div>
+        <h2 class="section-title text-center">Diseñado desde cero para la era de los Agentes de IA</h2>
+        <p class="section-subtitle text-center">
+          Explora los pilares que hacen de NexusFlow la plataforma preferida por arquitectos de software e ingenieros de automatización.
+        </p>
+
+        <!-- Feature Tabs Selector -->
+        <div class="tabs-nav" role="tablist">
+          <button class="tab-btn active" data-tab="tab-ai" role="tab" aria-selected="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a4 4 0 0 1 4 4v1a4 4 0 0 1-4 4 4 4 0 0 1-4-4V6a4 4 0 0 1 4-4z"/><path d="M18 10a6 6 0 0 1 6 6v2H0v-2a6 6 0 0 1 6-6"/></svg>
+            <span>Agentes IA & LangChain</span>
+          </button>
+          <button class="tab-btn" data-tab="tab-code" role="tab" aria-selected="false">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            <span>Nodos JS / Python</span>
+          </button>
+          <button class="tab-btn" data-tab="tab-git" role="tab" aria-selected="false">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="18" r="3"></circle><circle cx="6" cy="6" r="3"></circle><path d="M13 6h3a2 2 0 0 1 2 2v7"></path><line x1="6" y1="9" x2="6" y2="21"></line></svg>
+            <span>Control de Versiones Git</span>
+          </button>
+          <button class="tab-btn" data-tab="tab-sec" role="tab" aria-selected="false">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <span>Seguridad & Self-Host</span>
+          </button>
+        </div>
+
+        <!-- Tab 1: AI Agents -->
+        <div class="tab-panel active" id="tab-ai" role="tabpanel">
+          <div class="feature-detail-grid">
+            <div class="feature-detail-content">
+              <span class="detail-tag tag-violet">IA Multi-Agente & RAG</span>
+              <h3>Orquesta agentes autónomos con memoria vectorial y llamadas a herramientas (Tools)</h3>
+              <p>
+                No te limites a simples llamadas a ChatGPT. Construye grafos de agentes complejos: conecta bases vectoriales como Pinecone, Qdrant o pgvector, define herramientas que tus agentes pueden disparar en tiempo real y asigna memoria de conversación persistente.
+              </p>
+              <div class="feature-bullets">
+                <div class="bullet-row">
+                  <div class="bullet-icon">⚡</div>
+                  <div>
+                    <strong>Soporte para Model Context Protocol (MCP):</strong>
+                    Conecta servidores MCP locales o remotos sin escribir adaptadores manuales.
+                  </div>
+                </div>
+                <div class="bullet-row">
+                  <div class="bullet-icon">🔒</div>
+                  <div>
+                    <strong>Conexión con Modelos Locales (Ollama / vLLM):</strong>
+                    Ejecuta Llama 3, DeepSeek o Mistral en tus propias tarjetas GPU para privacidad médica o legal.
+                  </div>
+                </div>
+                <div class="bullet-row">
+                  <div class="bullet-icon">🎯</div>
+                  <div>
+                    <strong>Human-in-the-loop:</strong>
+                    Pausa el flujo automáticamente y envía un botón de aprobación a Slack o correo antes de ejecutar una acción crítica.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="feature-code-preview">
+              <div class="code-window">
+                <div class="code-header">
+                  <span class="file-name">agent_prompt_config.json</span>
+                  <span class="lang-tag">AI NODE</span>
+                </div>
+                <pre class="code-body"><code><span class="token-keyword">{</span>
+  <span class="token-key">"agent_type"</span>: <span class="token-string">"AutonomousReActAgent"</span>,
+  <span class="token-key">"llm_provider"</span>: <span class="token-string">"anthropic/claude-3-5-sonnet"</span>,
+  <span class="token-key">"temperature"</span>: <span class="token-number">0.1</span>,
+  <span class="token-key">"tools_enabled"</span>: [
+    <span class="token-string">"postgres_query_customer"</span>,
+    <span class="token-string">"stripe_refund_charge"</span>,
+    <span class="token-string">"slack_escalate_human"</span>
+  ],
+  <span class="token-key">"memory"</span>: {
+    <span class="token-key">"type"</span>: <span class="token-string">"PostgresChatMessageHistory"</span>,
+    <span class="token-key">"session_ttl"</span>: <span class="token-string">"48h"</span>
+  },
+  <span class="token-key">"max_reasoning_steps"</span>: <span class="token-number">8</span>
+<span class="token-keyword">}</span></code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Code Nodes -->
+        <div class="tab-panel" id="tab-code" role="tabpanel">
+          <div class="feature-detail-grid">
+            <div class="feature-detail-content">
+              <span class="detail-tag tag-cyan">Full-Stack Execution</span>
+              <h3>Escribe código real cuando los bloques visuales se quedan cortos</h3>
+              <p>
+                Las herramientas no-code comunes fallan en cuanto necesitas transformar un JSON complejo o calcular firmas criptográficas. Con NexusFlow, cualquier nodo puede ser una función pura en JavaScript (ES2024) o Python 3.12 con soporte total para paquetes externos.
+              </p>
+              <div class="feature-bullets">
+                <div class="bullet-row">
+                  <div class="bullet-icon">📦</div>
+                  <div><strong>NPM & PIP directos:</strong> Importa <code>lodash</code>, <code>pandas</code>, <code>crypto</code> o librerías internas privadas.</div>
+                </div>
+                <div class="bullet-row">
+                  <div class="bullet-icon">🧪</div>
+                  <div><strong>Pruebas unitarias en vivo:</strong> Inspecciona el payload exacto de entrada y salida con auto-completado tipado.</div>
+                </div>
+              </div>
+            </div>
+            <div class="feature-code-preview">
+              <div class="code-window">
+                <div class="code-header">
+                  <span class="file-name">calculate_risk_score.py</span>
+                  <span class="lang-tag">PYTHON 3.12</span>
+                </div>
+                <pre class="code-body"><code><span class="token-keyword">import</span> math
+<span class="token-keyword">from</span> datetime <span class="token-keyword">import</span> datetime
+
+<span class="token-keyword">def</span> <span class="token-function">main</span>(items):
+    processed = []
+    <span class="token-keyword">for</span> item <span class="token-keyword">in</span> items:
+        history = item[<span class="token-string">'charge_history'</span>]
+        anomaly_score = sum(history) / len(history)
+        
+        <span class="token-comment"># Enriquecer salida del nodo</span>
+        processed.append({
+            <span class="token-string">"customer_id"</span>: item[<span class="token-string">'id'</span>],
+            <span class="token-string">"risk_level"</span>: <span class="token-string">"HIGH"</span> <span class="token-keyword">if</span> anomaly_score > <span class="token-number">850</span> <span class="token-keyword">else</span> <span class="token-string">"LOW"</span>,
+            <span class="token-string">"verified_at"</span>: datetime.utcnow().isoformat()
+        })
+    <span class="token-keyword">return</span> processed</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Git & CI/CD -->
+        <div class="tab-panel" id="tab-git" role="tabpanel">
+          <div class="feature-detail-grid">
+            <div class="feature-detail-content">
+              <span class="detail-tag tag-emerald">DevOps Ready</span>
+              <h3>Workflows como código: Versiona, revisa Pull Requests y despliega</h3>
+              <p>
+                Trata tus automatizaciones exactamente igual que el resto de tu software. Exporta flujos en formato JSON declarativo, realiza commits en tu repositorio Git y sincroniza entornos de Desarrollo, Staging y Producción automáticamente.
+              </p>
+              <div class="feature-bullets">
+                <div class="bullet-row">
+                  <div class="bullet-icon">🔀</div>
+                  <div><strong>Manejo de variables de entorno:</strong> Mantén credenciales seguras mediante HashiCorp Vault o AWS Secrets Manager.</div>
+                </div>
+                <div class="bullet-row">
+                  <div class="bullet-icon">🛡️</div>
+                  <div><strong>Rollback instantáneo:</strong> Vuelve a una versión previa del flujo en 1 clic si una API externa cambia su contrato.</div>
+                </div>
+              </div>
+            </div>
+            <div class="feature-code-preview">
+              <div class="code-window">
+                <div class="code-header">
+                  <span class="file-name">.github/workflows/deploy-flows.yml</span>
+                  <span class="lang-tag">YAML</span>
+                </div>
+                <pre class="code-body"><code><span class="token-keyword">name:</span> <span class="token-string">Sync NexusFlow Workflows</span>
+<span class="token-keyword">on:</span>
+  <span class="token-keyword">push:</span>
+    <span class="token-keyword">branches:</span> [ <span class="token-string">main</span> ]
+
+<span class="token-keyword">jobs:</span>
+  <span class="token-keyword">deploy:</span>
+    <span class="token-keyword">runs-on:</span> ubuntu-latest
+    <span class="token-keyword">steps:</span>
+      - <span class="token-keyword">uses:</span> actions/checkout@v4
+      - <span class="token-keyword">name:</span> Deploy to Cluster
+        <span class="token-keyword">run:</span> |
+          nexusflow-cli sync \
+            --token ${{ secrets.NEXUS_API_KEY }} \
+            --env production \
+            --dir ./workflows</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Security & Self-Host -->
+        <div class="tab-panel" id="tab-sec" role="tabpanel">
+          <div class="feature-detail-grid">
+            <div class="feature-detail-content">
+              <span class="detail-tag tag-orange">Enterprise Compliance</span>
+              <h3>Auditoría estricta, SSO SAML, RBAC y despliegue On-Premise</h3>
+              <p>
+                Cumple con las directivas más rigurosas de seguridad (SOC2 Tipo II, ISO 27001, HIPAA y GDPR). Define roles específicos por equipo (Desarrollador, Auditor, Solo Lectura) y rastrea cada ejecución hasta el milisegundo exacto.
+              </p>
+              <div class="feature-bullets">
+                <div class="bullet-row">
+                  <div class="bullet-icon">🔐</div>
+                  <div><strong>Single Sign-On (SSO):</strong> Integración nativa con Okta, Google Workspace, Azure AD y Keycloak.</div>
+                </div>
+                <div class="bullet-row">
+                  <div class="bullet-icon">📊</div>
+                  <div><strong>Logs exhaustivos a Datadog o Grafana:</strong> Monitoreo de latencia, fallos y throughput sin sobrecostos.</div>
+                </div>
+              </div>
+            </div>
+            <div class="feature-code-preview">
+              <div class="code-window">
+                <div class="code-header">
+                  <span class="file-name">docker-compose.enterprise.yml</span>
+                  <span class="lang-tag">DOCKER</span>
+                </div>
+                <pre class="code-body"><code><span class="token-keyword">services:</span>
+  <span class="token-key">nexusflow-cluster:</span>
+    <span class="token-key">image:</span> nexusflow/engine:enterprise
+    <span class="token-key">restart:</span> always
+    <span class="token-key">environment:</span>
+      - <span class="token-string">ENCRYPTION_KEY=${NEXUS_SECRET_KEY}</span>
+      - <span class="token-string">DB_TYPE=postgresdb</span>
+      - <span class="token-string">SAML_SSO_ENABLED=true</span>
+      - <span class="token-string">AUDIT_LOGS_DESTINATION=s3://corp-audit</span>
+    <span class="token-key">ports:</span>
+      - <span class="token-string">"5678:5678"</span>
+    <span class="token-key">deploy:</span>
+      <span class="token-key">replicas:</span> <span class="token-number">4</span></code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Template Gallery Showcase (Interactive Filtering) -->
+    <section class="section templates-section" id="plantillas">
+      <div class="container">
+        <div class="section-badge-center">
+          <span class="badge-text">BIBLIOTECA COMUNITARIA</span>
+        </div>
+        <h2 class="section-title text-center">Comienza en segundos con más de 800 plantillas listas</h2>
+        <p class="section-subtitle text-center">
+          Filtra por caso de uso e importa flujos completos en 1 clic directamente a tu espacio de trabajo.
+        </p>
+
+        <!-- Category Filters -->
+        <div class="template-filters" id="template-filters">
+          <button class="filter-chip active" data-filter="all">Todos los casos</button>
+          <button class="filter-chip" data-filter="ia">🤖 Inteligencia Artificial</button>
+          <button class="filter-chip" data-filter="devops">⚙️ DevOps & Cloud</button>
+          <button class="filter-chip" data-filter="sales">📈 Ventas & CRM</button>
+          <button class="filter-chip" data-filter="support">🎧 Atención al Cliente</button>
+        </div>
+
+        <!-- Template Cards Grid -->
+        <div class="templates-grid" id="templates-grid">
+          
+          <!-- Card 1 -->
+          <article class="template-card" data-category="ia">
+            <div class="template-card-header">
+              <div class="template-badges">
+                <span class="node-pill">OpenAI</span>
+                <span class="node-pill">Slack</span>
+                <span class="node-pill">Pinecone</span>
+              </div>
+              <span class="difficulty-tag">Intermedio</span>
+            </div>
+            <h4 class="template-title">Bot de soporte RAG con memoria y búsqueda semántica</h4>
+            <p class="template-desc">
+              Responde dudas técnicas de usuarios buscando documentación en una base vectorial y escala casos complejos a soporte humano.
+            </p>
+            <div class="template-footer">
+              <span class="template-runs">⭐ 4.9 (1.2k descargas)</span>
+              <button class="btn btn-sm btn-outline btn-use-template" data-template="Soporte RAG con Pinecone">Usar Plantilla</button>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="template-card" data-category="devops">
+            <div class="template-card-header">
+              <div class="template-badges">
+                <span class="node-pill">GitHub</span>
+                <span class="node-pill">Docker</span>
+                <span class="node-pill">Telegram</span>
+              </div>
+              <span class="difficulty-tag">Avanzado</span>
+            </div>
+            <h4 class="template-title">Notificador de Fallos CI/CD con Rollback Automático</h4>
+            <p class="template-desc">
+              Detecta pipelines rotos en GitHub Actions, genera un resumen de la causa raíz con LLM y avisa a ingenieros de guardia.
+            </p>
+            <div class="template-footer">
+              <span class="template-runs">⭐ 4.8 (890 descargas)</span>
+              <button class="btn btn-sm btn-outline btn-use-template" data-template="Rollback CI/CD">Usar Plantilla</button>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="template-card" data-category="sales">
+            <div class="template-card-header">
+              <div class="template-badges">
+                <span class="node-pill">Stripe</span>
+                <span class="node-pill">HubSpot</span>
+                <span class="node-pill">WhatsApp</span>
+              </div>
+              <span class="difficulty-tag">Fácil</span>
+            </div>
+            <h4 class="template-title">Recuperación de Carritos y Facturas Fallidas</h4>
+            <p class="template-desc">
+              Sincroniza eventos de cobros fallidos en Stripe, actualiza el deal en HubSpot y envía un enlace de pago por WhatsApp Business.
+            </p>
+            <div class="template-footer">
+              <span class="template-runs">⭐ 5.0 (2.4k descargas)</span>
+              <button class="btn btn-sm btn-outline btn-use-template" data-template="Recuperación Stripe">Usar Plantilla</button>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="template-card" data-category="ia">
+            <div class="template-card-header">
+              <div class="template-badges">
+                <span class="node-pill">Claude 3.5</span>
+                <span class="node-pill">Gmail</span>
+                <span class="node-pill">Notion</span>
+              </div>
+              <span class="difficulty-tag">Intermedio</span>
+            </div>
+            <h4 class="template-title">Clasificador y Redactor de Respuestas para Bandeja de Entrada</h4>
+            <p class="template-desc">
+              Analiza correos entrantes, clasifica el tono y la prioridad, y redacta un borrador personalizado en tu cuenta de correo.
+            </p>
+            <div class="template-footer">
+              <span class="template-runs">⭐ 4.9 (3.1k descargas)</span>
+              <button class="btn btn-sm btn-outline btn-use-template" data-template="Clasificador Gmail">Usar Plantilla</button>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="template-card" data-category="support">
+            <div class="template-card-header">
+              <div class="template-badges">
+                <span class="node-pill">Zendesk</span>
+                <span class="node-pill">Discord</span>
+                <span class="node-pill">Postgres</span>
+              </div>
+              <span class="difficulty-tag">Fácil</span>
+            </div>
+            <h4 class="template-title">Sincronizador Bidireccional de Tickets y Métricas CSAT</h4>
+            <p class="template-desc">
+              Mantiene una réplica analítica en Postgres de todos los tickets resueltos y calcula tiempos promedio de primera respuesta.
+            </p>
+            <div class="template-footer">
+              <span class="template-runs">⭐ 4.7 (740 descargas)</span>
+              <button class="btn btn-sm btn-outline btn-use-template" data-template="Sincronizador Tickets">Usar Plantilla</button>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="template-card" data-category="devops">
+            <div class="template-card-header">
+              <div class="template-badges">
+                <span class="node-pill">AWS S3</span>
+                <span class="node-pill">Cron</span>
+                <span class="node-pill">Slack</span>
+              </div>
+              <span class="difficulty-tag">Fácil</span>
+            </div>
+            <h4 class="template-title">Backup Diario Automatizado de Bases de Datos con Cifrado</h4>
+            <p class="template-desc">
+              Vuelca copias de seguridad de PostgreSQL / MySQL, las cifra con GPG y las almacena en un bucket S3 de retención prolongada.
+            </p>
+            <div class="template-footer">
+              <span class="template-runs">⭐ 4.9 (1.8k descargas)</span>
+              <button class="btn btn-sm btn-outline btn-use-template" data-template="Backup Diario S3">Usar Plantilla</button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Self-Hosted Terminal Interactive Section -->
+    <section class="section self-hosted-section" id="self-hosted">
+      <div class="container">
+        <div class="self-host-box">
+          
+          <div class="self-host-info">
+            <span class="detail-tag tag-emerald">Fair-Code License</span>
+            <h2>Despliega en tu propia infraestructura en menos de 60 segundos</h2>
+            <p>
+              Sin telemetría invasiva ni restricciones artificiales de rendimiento. Solo necesitas Docker para tener una instancia completa de NexusFlow corriendo en tu VPS, servidor local o cluster Kubernetes.
+            </p>
+
+            <div class="install-options-tabs">
+              <button class="install-tab active" data-cmd="docker">Docker CLI</button>
+              <button class="install-tab" data-cmd="compose">Docker Compose</button>
+              <button class="install-tab" data-cmd="k8s">Helm / K8s</button>
+              <button class="install-tab" data-cmd="npm">npm / npx</button>
+            </div>
+
+            <div class="terminal-card">
+              <div class="terminal-bar">
+                <span class="term-title">terminal — bash</span>
+                <button class="btn-copy-install" id="btn-copy-install" aria-label="Copiar comando de instalación">
+                  <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <span>Copiar comando</span>
+                </button>
+              </div>
+              <pre class="terminal-code"><code id="install-command-display">docker run -it --rm \
+  --name nexusflow \
+  -p 5678:5678 \
+  -v ~/.nexusflow:/home/node/.nexusflow \
+  nexusflow/engine:latest</code></pre>
+            </div>
+
+            <div class="self-host-benefits">
+              <div class="benefit-item">
+                <span class="icon">💻</span>
+                <span>Usa tu hardware local o GPU para IA</span>
+              </div>
+              <div class="benefit-item">
+                <span class="icon">🛡️</span>
+                <span>Aislamiento absoluto en tu VPC</span>
+              </div>
+              <div class="benefit-item">
+                <span class="icon">🚀</span>
+                <span>Actualizaciones de imagen sin downtime</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section pricing-section" id="precios">
+      <div class="container">
+        <div class="section-badge-center">
+          <span class="badge-text">PLANES TRANSPARENTES</span>
+        </div>
+        <h2 class="section-title text-center">Precios diseñados para escalar sin sorpresas</h2>
+        <p class="section-subtitle text-center">
+          Elige entre auto-hospedar gratuitamente en tus servidores o dejar la infraestructura en nuestras manos con NexusFlow Cloud.
+        </p>
+
+        <!-- Billing Period Toggle -->
+        <div class="billing-toggle-wrapper">
+          <span class="billing-label">Mensual</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="pricing-period-toggle" checked>
+            <span class="slider"></span>
+          </label>
+          <span class="billing-label">Anual <span class="discount-badge">Ahorra 20%</span></span>
+        </div>
+
+        <!-- Pricing Cards Grid -->
+        <div class="pricing-grid">
+          
+          <!-- Plan 1: Community Self-Hosted -->
+          <div class="pricing-card">
+            <div class="plan-header">
+              <span class="plan-type">Auto-Hospedado</span>
+              <h3 class="plan-name">Community Edition</h3>
+              <p class="plan-desc">Para desarrolladores individuales, prototipos y entusiastas del software libre.</p>
+            </div>
+            <div class="plan-price">
+              <span class="currency">€</span>
+              <span class="amount">0</span>
+              <span class="period">/ por siempre</span>
+            </div>
+            <a href="#self-hosted" class="btn btn-outline" style="width: 100%;">Instalar con Docker</a>
+            <ul class="plan-features">
+              <li><span class="check">✓</span> <strong>Ejecuciones ilimitadas</strong> en tu hardware</li>
+              <li><span class="check">✓</span> Todos los +450 nodos e integraciones</li>
+              <li><span class="check">✓</span> Soporte completo para Agentes de IA</li>
+              <li><span class="check">✓</span> Nodos de código en JS y Python</li>
+              <li><span class="check">✓</span> Soporte comunitario en Discord y Foro</li>
+            </ul>
+          </div>
+
+          <!-- Plan 2: Cloud Pro (Highlighted) -->
+          <div class="pricing-card card-featured">
+            <div class="featured-ribbon">MÁS POPULAR</div>
+            <div class="plan-header">
+              <span class="plan-type">Nube Gestionada</span>
+              <h3 class="plan-name">Cloud Pro</h3>
+              <p class="plan-desc">Cero mantenimiento de servidores con alta disponibilidad y copias automáticas.</p>
+            </div>
+            <div class="plan-price">
+              <span class="currency">€</span>
+              <span class="amount" id="price-pro">24</span>
+              <span class="period" id="period-pro">/ mes (facturado anualmente)</span>
+            </div>
+            <button class="btn btn-primary glow-button btn-select-plan" style="width: 100%;" data-plan="Cloud Pro">
+              <span>Comenzar Prueba Gratuita</span>
+            </button>
+            <ul class="plan-features">
+              <li><span class="check">✓</span> <strong>50,000 ejecuciones incluidas</strong> al mes</li>
+              <li><span class="check">✓</span> Flujos activos ilimitados</li>
+              <li><span class="check">✓</span> Infraestructura aislada y gestionada</li>
+              <li><span class="check">✓</span> Copias de seguridad automáticas cada hora</li>
+              <li><span class="check">✓</span> Conexión con LLMs premium con 1 clic</li>
+              <li><span class="check">✓</span> Soporte prioritario por email en menos de 4h</li>
+            </ul>
+          </div>
+
+          <!-- Plan 3: Enterprise -->
+          <div class="pricing-card">
+            <div class="plan-header">
+              <span class="plan-type">Cloud o Dedicado</span>
+              <h3 class="plan-name">Enterprise</h3>
+              <p class="plan-desc">Para corporaciones con requerimientos estrictos de gobernanza y alta concurrencia.</p>
+            </div>
+            <div class="plan-price">
+              <span class="amount custom-price">A Medida</span>
+              <span class="period">/ SLA 99.99%</span>
+            </div>
+            <button class="btn btn-outline btn-select-plan" style="width: 100%;" data-plan="Enterprise">Contactar con Ventas</button>
+            <ul class="plan-features">
+              <li><span class="check">✓</span> Ejecuciones a escala masiva dedicada</li>
+              <li><span class="check">✓</span> SSO SAML (Okta, Azure AD, Google)</li>
+              <li><span class="check">✓</span> Auditoría de logs (SOC2, HIPAA, GDPR)</li>
+              <li><span class="check">✓</span> Roles y permisos granulares (RBAC)</li>
+              <li><span class="check">✓</span> Despliegue en tu VPC privada o Kubernetes</li>
+              <li><span class="check">✓</span> Gestor de cuenta técnico dedicado 24/7</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Social Proof & Testimonials -->
+    <section class="section testimonials-section">
+      <div class="container">
+        <div class="section-badge-center">
+          <span class="badge-text">OPINIONES DE LA COMUNIDAD</span>
+        </div>
+        <h2 class="section-title text-center">Confiado por más de 120,000 ingenieros en producción</h2>
+        
+        <div class="testimonials-grid">
+          
+          <div class="testimonial-card">
+            <div class="testi-rating">★★★★★</div>
+            <p class="testi-text">
+              "Migramos más de 180 flujos desde Zapier a NexusFlow. No solo ahorramos más de 2.400 € al mes en costes de operaciones, sino que el hecho de poder meter código JavaScript real en los nodos nos permitió resolver pipelines de datos que antes eran imposibles."
+            </p>
+            <div class="testi-author">
+              <div class="author-avatar av-1">MC</div>
+              <div class="author-info">
+                <strong>Marcos Calvo</strong>
+                <span>Head of Engineering @ FinTech Scaleup</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testi-rating">★★★★★</div>
+            <p class="testi-text">
+              "La integración de agentes autónomos con Model Context Protocol (MCP) nos ahorró meses de desarrollo interno de backend. En dos semanas teníamos desplegado un asistente para atención a clientes con memoria vectorial conectada a Postgres."
+            </p>
+            <div class="testi-author">
+              <div class="author-avatar av-2">LS</div>
+              <div class="author-info">
+                <strong>Laura Salgado</strong>
+                <span>Lead AI Solutions Architect</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testi-rating">★★★★★</div>
+            <p class="testi-text">
+              "Para nosotros como clínica de salud, el requerimiento de cumplimiento GDPR y soberanía de datos impedía el uso de plataformas no-code públicas. Correr NexusFlow en nuestro propio cluster Kubernetes fue la solución perfecta."
+            </p>
+            <div class="testi-author">
+              <div class="author-avatar av-3">DA</div>
+              <div class="author-info">
+                <strong>David Alarcón</strong>
+                <span>DevOps & Security Specialist</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq-section">
+      <div class="container faq-container">
+        <div class="section-badge-center">
+          <span class="badge-text">PREGUNTAS FRECUENTES</span>
+        </div>
+        <h2 class="section-title text-center">Todo lo que necesitas saber antes de empezar</h2>
+
+        <div class="faq-accordion" id="faq-accordion">
+          
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">
+              <span>¿En qué se diferencia NexusFlow de n8n o Zapier?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-content">
+              <p>
+                A diferencia de Zapier, NexusFlow es fair-code y te permite auto-hospedar ilimitadamente sin pagar por cada tarea individual. Y comparado con n8n, NexusFlow integra una arquitectura nativa de agentes de Inteligencia Artificial con soporte MCP (Model Context Protocol), conectores para modelos locales como Ollama y una suite moderna de sincronización Git bidireccional.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">
+              <span>¿Puedo usar la versión Community sin pagar nunca nada?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-content">
+              <p>
+                Sí, totalmente. La versión Community es 100% gratuita para desplegar en tus propios servidores, VPS o entorno local. No hay límites en la cantidad de ejecuciones, número de flujos o nodos disponibles.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">
+              <span>¿Cómo funciona la conexión con modelos de IA locales (sin enviar datos a OpenAI)?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-content">
+              <p>
+                NexusFlow incluye un nodo nativo de LLM local compatible con cualquier servidor HTTP que exponga la API estándar de inferencia (como Ollama, LM Studio o vLLM). Simplemente configuras la URL local de tu endpoint (ej: <code>http://localhost:11434</code>) y procesarás texto, resúmenes y clasificaciones sin que ningún dato salga de tu red privada.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">
+              <span>¿Es compatible con pipelines de CI/CD y control de versiones con Git?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-content">
+              <p>
+                Sí. Todos los workflows se pueden exportar e importar en formato JSON estándar. Nuestra CLI <code>nexusflow-cli</code> te permite automatizar la sincronización de flujos desde GitHub Actions, GitLab CI o Bitbucket, facilitando pruebas automatizadas antes de pasar a producción.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">
+              <span>¿Qué requerimientos mínimos de sistema necesito para auto-hospedarlo?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-content">
+              <p>
+                Para flujos de trabajo habituales, una máquina virtual básica con 1 vCPU y 1 GB de memoria RAM es suficiente. Para cargas de trabajo intensivas con miles de llamadas concurrentes o procesamiento pesado de imágenes y datasets, recomendamos a partir de 2 vCPU y 4 GB de RAM.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Call to Action -->
+    <section class="section final-cta-section">
+      <div class="container">
+        <div class="cta-banner-card">
+          <div class="cta-mesh-glow"></div>
+          <span class="detail-tag tag-violet">COMIENZA HOY MISMO</span>
+          <h2 class="cta-title">Diseña tu primera automatización en menos de 5 minutos</h2>
+          <p class="cta-subtitle">
+            Sin tarjeta de crédito requerida. Prueba en nuestra nube o copia el comando Docker para desplegar localmente.
+          </p>
+
+          <div class="cta-buttons-row">
+            <a href="#self-hosted" class="btn btn-primary btn-lg glow-button">
+              <span>Lanzar Instancia en la Nube</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#canvas-demo" class="btn btn-secondary btn-lg">Probar Canvas Interactivo</a>
+          </div>
+
+          <div class="cta-trust-ticker">
+            <span>✓ Licencia Fair-Code</span>
+            <span>✓ Soporte activo en Discord (+35,000 miembros)</span>
+            <span>✓ 100% extensible</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Interactive Node Modal (Inspector de nodo al hacer clic en canvas) -->
+  <div class="modal-backdrop" id="node-modal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-node-title">
+      <div class="modal-header">
+        <div class="modal-node-info">
+          <div class="node-icon" id="modal-node-icon">⚡</div>
+          <div>
+            <h4 id="modal-node-title">Configuración del Nodo</h4>
+            <span class="modal-node-sub" id="modal-node-sub">ID: node_exec_instance</span>
+          </div>
+        </div>
+        <button class="btn-modal-close" id="btn-close-modal" aria-label="Cerrar modal">✕</button>
+      </div>
+      <div class="modal-content">
+        <div class="modal-tabs">
+          <button class="m-tab active" data-mtab="params">Parámetros</button>
+          <button class="m-tab" data-mtab="input">Input Data</button>
+          <button class="m-tab" data-mtab="output">Output Data</button>
+        </div>
+        <div class="modal-tab-content active" id="mtab-params">
+          <div class="modal-form-preview" id="modal-form-fields">
+            <!-- Dynamic parameters populated by JS -->
+          </div>
+        </div>
+        <div class="modal-tab-content" id="mtab-input">
+          <pre class="json-code" id="modal-json-input"></pre>
+        </div>
+        <div class="modal-tab-content" id="mtab-output">
+          <pre class="json-code" id="modal-json-output"></pre>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-sm btn-outline" id="btn-modal-dismiss">Cerrar</button>
+        <button class="btn btn-sm btn-primary" id="btn-modal-test">Probar este Nodo Individual</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification System -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      
+      <div class="footer-brand-col">
+        <div class="brand-logo">
+          <div class="logo-mark">
+            <svg viewBox="0 0 32 32" fill="none" class="logo-svg">
+              <rect width="32" height="32" rx="8" fill="url(#logo-grad-f)"/>
+              <circle cx="10" cy="16" r="3.5" fill="#ffffff" />
+              <circle cx="22" cy="10" r="3.5" fill="#ffffff" />
+              <circle cx="22" cy="22" r="3.5" fill="#ffffff" />
+              <path d="M10 16L22 10M10 16L22 22" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+              <defs>
+                <linearGradient id="logo-grad-f" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#FF5C38"/>
+                  <stop offset="0.5" stop-color="#8B5CF6"/>
+                  <stop offset="1" stop-color="#06B6D4"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <span class="brand-name">Nexus<span>Flow</span></span>
+        </div>
+        <p class="footer-tagline">
+          La plataforma visual de automatización basada en nodos con código abierto, soporte para IA autónoma y soberanía total sobre tus datos.
+        </p>
+        <div class="system-status-indicator">
+          <span class="status-pulse-dot"></span>
+          <span>Todos los servicios operativos (SLA 99.99%)</span>
+        </div>
+      </div>
+
+      <div class="footer-links-grid">
+        <div class="footer-col">
+          <h5>Producto</h5>
+          <ul>
+            <li><a href="#canvas-demo">Editor Visual de Nodos</a></li>
+            <li><a href="#ia-section">Agentes IA & LangChain</a></li>
+            <li><a href="#plantillas">Galería de Plantillas</a></li>
+            <li><a href="#self-hosted">Despliegue On-Premise</a></li>
+            <li><a href="#precios">Precios y Planes</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Integraciones</h5>
+          <ul>
+            <li><a href="#">OpenAI & Claude</a></li>
+            <li><a href="#">PostgreSQL & MySQL</a></li>
+            <li><a href="#">Slack & Discord</a></li>
+            <li><a href="#">Stripe & HubSpot</a></li>
+            <li><a href="#">Ver todas (+450)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Comunidad</h5>
+          <ul>
+            <li><a href="https://github.com" target="_blank" rel="noopener">GitHub Repo</a></li>
+            <li><a href="#">Servidor de Discord</a></li>
+            <li><a href="#">Foro de la Comunidad</a></li>
+            <li><a href="#">Guía de Contribución</a></li>
+            <li><a href="#">Reportar una Vulnerabilidad</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Legal & Privacidad</h5>
+          <ul>
+            <li><a href="#">Términos del Servicio</a></li>
+            <li><a href="#">Política de Privacidad</a></li>
+            <li><a href="#">Cumplimiento GDPR</a></li>
+            <li><a href="#">Seguridad de Datos</a></li>
+            <li><a href="#">Configuración de Cookies</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom-bar">
+      <div class="container footer-bottom-content">
+        <p>&copy; 2026 NexusFlow Technologies Inc. Todos los derechos reservados. Inspirado en la filosofía de automatización flexible.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Twitter / X">𝕏</a>
+          <a href="#" aria-label="GitHub">GitHub</a>
+          <a href="#" aria-label="LinkedIn">LinkedIn</a>
+          <a href="#" aria-label="YouTube">YouTube</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
